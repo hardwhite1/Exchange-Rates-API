@@ -1,0 +1,29 @@
+@model TestMvc1.Models.ExchangeRatesResponse
+
+@{
+    ViewData["Title"] ="Exchange rates";
+}
+
+<h1>Exchange Rates (Base: @Model.Base)</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Currency</th>
+            <th>Rate</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var rate in Model.Rates)
+        {
+            <tr>
+                <td>@rate.Key</td>
+                <td>@rate.Value</td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+<a asp-action="Convert" class="btn btn-success">Currency Converter</a>
+

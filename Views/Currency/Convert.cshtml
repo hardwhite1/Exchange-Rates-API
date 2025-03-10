@@ -1,0 +1,34 @@
+@model CurrencyConversionModel
+
+@{
+    ViewData["Title"] = "Currency Converter";
+}
+
+<h2>Currency Converter</h2>
+
+<form asp-action="Convert" method="post">
+    <div class="form-group">
+        <label asp-for="Amount">Amount:</label>
+        <input asp-for="Amount" class="form-controll" />
+        <span asp-asp-validation-for="Amount" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BaseCurrency">Base Currency(e.g., USD)</label>
+        <input asp-for="BaseCurrency" class="form-controll" />
+        <span asp-validation-for="BaseCurrency" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="TargetCurrency">Target Currency (e.g., EUR)</label>
+        <input asp-for="TargetCurrency" class="form-controll" />
+        <span asp-validation-for="TargetCurrency" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Convert</button>
+
+</form>
+
+@if(Model != null && Model.ConvertedAmount > 0)
+{
+    <h2>Conversion Result</h2>
+
+    <p>@Model.Amount @Model.BaseCurrency = @Model.ConvertedAmount @Model.TargetCurrency</p>
+}
