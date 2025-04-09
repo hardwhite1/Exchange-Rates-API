@@ -8,4 +8,4 @@ namespace TestMvc1.Models
 
         public Dictionary<string, decimal>? Rates { get; set; }
     }
-}
+}    

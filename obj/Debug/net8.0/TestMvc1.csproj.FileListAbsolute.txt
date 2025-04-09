@@ -137,3 +137,4 @@ C:\Users\Jack\Desktop\Disk B\DOT NET CORE\TestMvc1\obj\Debug\net8.0\refint\TestM
 C:\Users\Jack\Desktop\Disk B\DOT NET CORE\TestMvc1\obj\Debug\net8.0\TestMvc1.pdb
 C:\Users\Jack\Desktop\Disk B\DOT NET CORE\TestMvc1\obj\Debug\net8.0\TestMvc1.genruntimeconfig.cache
 C:\Users\Jack\Desktop\Disk B\DOT NET CORE\TestMvc1\obj\Debug\net8.0\ref\TestMvc1.dll
+C:\Users\Jack\Desktop\Disk B\DOT NET CORE\TestMvc1\obj\Debug\net8.0\TestMvc1.sourcelink.json

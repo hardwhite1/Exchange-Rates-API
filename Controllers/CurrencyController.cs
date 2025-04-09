@@ -7,16 +7,16 @@ namespace TestMvc1.Controllers
 {
     public class CurrencyController : Controller
     {
-        private readonly ExchangeRateService _ExchangeRateService;
+        private readonly ExchangeRateService _exchangeRateService;
 
         public CurrencyController(ExchangeRateService exchangeRateService)
         {
-            _ExchangeRateService = exchangeRateService;
+            _exchangeRateService = exchangeRateService;
         }
 
         public async Task<IActionResult> Index()
         {
-            var exchangeRate = await _ExchangeRateService.GetExchangeRatesAsync();
+            var exchangeRate = await _exchangeRateService.GetExchangeRatesAsync();
 
             return View(exchangeRate);
         }
@@ -34,7 +34,7 @@ namespace TestMvc1.Controllers
                 try
                 {
                     //perform the conversion
-                    model.ConvertedAmount = await _ExchangeRateService.ConvertCurrencyAsync(model.Amount, model.BaseCurrency, model.TargetCurrency);
+                    model.ConvertedAmount = await _exchangeRateService.ConvertCurrencyAsync(model.Amount, model.BaseCurrency, model.TargetCurrency);
 
                     //passs the result to the view
                     return View(model);
