@@ -15,7 +15,8 @@ namespace TestMvc1.Services
         {
             _httpClient = httpClient;
         }
-        public async Task<ExchangeRatesResponse?> GetExchangeRatesAsync(string baseCurrency="USD")
+
+        public async Task<ExchangeRatesResponse?> GetExchangeRatesAsync(string baseCurrency="USD", int currentPage = 1, int pageSize = 10)
         {
             string url = $"https://api.exchangerate-api.com/v4/latest/{baseCurrency}";
 
@@ -25,7 +26,27 @@ namespace TestMvc1.Services
             {
                 string json = await response.Content.ReadAsStringAsync();
 
-                return JsonConvert.DeserializeObject<ExchangeRatesResponse>(json);
+                var exchangeRates =  JsonConvert.DeserializeObject<ExchangeRatesResponse>(json);
+
+                int totalItems = exchangeRates.Rates.Count;
+
+                //cretae pagination subsets
+                var paginatedRates = exchangeRates.Rates
+                .Skip((currentPage-1) * pageSize)
+                .Take(pageSize)
+                .ToDictionary(kvp=> kvp.Key, kvp=> kvp.Value);
+
+                exchangeRates.Rates = paginatedRates;
+
+                //perform pagination
+
+                exchangeRates.pagination = new Pagination(
+                    totalItems : totalItems,
+                    currentPage : currentPage,
+                    pageSize : pageSize
+                );
+
+                return exchangeRates;
             }
 
 

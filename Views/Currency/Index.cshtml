@@ -27,3 +27,17 @@
 
 <a asp-action="Convert" class="btn btn-success">Currency Converter</a>
 
+<div class="pagination">
+    @if(Model.pagination != null && @Model.pagination.HasPreviousPage)
+    {
+        <a asp-action="Index" asp-route-currentPage="@(Model.pagination.CurrentPage-1)">Previous</a>
+    }
+
+    <span>Page @Model.pagination?.CurrentPage of @Model.pagination?.TotalPages</span>
+
+    @if(Model.pagination != null && Model.pagination.HasNextPage)
+    {
+        <a asp-action="Index" asp-route-currentPage="@(Model.pagination.CurrentPage+1)">Next</a>
+    }
+</div>
+

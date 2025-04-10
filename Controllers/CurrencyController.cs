@@ -14,9 +14,10 @@ namespace TestMvc1.Controllers
             _exchangeRateService = exchangeRateService;
         }
 
-        public async Task<IActionResult> Index()
+        [HttpGet]
+        public async Task<IActionResult> Index(int currentPage=1, int pageSize=10)
         {
-            var exchangeRate = await _exchangeRateService.GetExchangeRatesAsync();
+            var exchangeRate = await _exchangeRateService.GetExchangeRatesAsync("USD", currentPage, pageSize);
 
             return View(exchangeRate);
         }
