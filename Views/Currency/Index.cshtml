@@ -32,8 +32,9 @@
     {
         <a asp-action="Index" asp-route-currentPage="@(Model.pagination.CurrentPage-1)">Previous</a>
     }
-
+    <br>
     <span>Page @Model.pagination?.CurrentPage of @Model.pagination?.TotalPages</span>
+    <br>
 
     @if(Model.pagination != null && Model.pagination.HasNextPage)
     {
